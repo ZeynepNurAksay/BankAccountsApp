@@ -17,11 +17,22 @@ namespace BankAccountsApp
         {
             if (!string.IsNullOrEmpty(OwnerTxt.Text))
             {
-                BankAccount bankAccount = new BankAccount(OwnerTxt.Text);
-                BankAccounts.Add(bankAccount);
+                if(InterestRateNum.Value == 0)
+                {
+                    BankAccount bankAccount = new BankAccount(OwnerTxt.Text);
+                    BankAccounts.Add(bankAccount);
+                }
+                else
+                {
+                    SavingsAccount savingsAccount = new SavingsAccount($"{OwnerTxt.Text} ({InterestRateNum.Value}%)", InterestRateNum.Value);
+                    BankAccounts.Add(savingsAccount);
+                }
+
                 OwnerTxt.Text = "";
+                InterestRateNum.Value = 0;
                 DepositBtn.Enabled = true;
                 WithdrawBtn.Enabled = true;
+
             }
             else
             {
@@ -60,7 +71,7 @@ namespace BankAccountsApp
         private void WithdrawBtn_Click(object sender, EventArgs e)
         {
             GetSelectedAccount().Withdraw(AmountNum.Value);
-            
+
             RefreshGrid();
         }
     }

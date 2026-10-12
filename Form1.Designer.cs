@@ -36,8 +36,11 @@
             DepositBtn = new Button();
             WithdrawBtn = new Button();
             CreateAccountBtn = new Button();
+            label3 = new Label();
+            InterestRateNum = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)AmountNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BankAccountGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)InterestRateNum).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -110,7 +113,7 @@
             // 
             // CreateAccountBtn
             // 
-            CreateAccountBtn.Location = new Point(150, 125);
+            CreateAccountBtn.Location = new Point(150, 193);
             CreateAccountBtn.Name = "CreateAccountBtn";
             CreateAccountBtn.Size = new Size(419, 63);
             CreateAccountBtn.TabIndex = 7;
@@ -118,11 +121,31 @@
             CreateAccountBtn.UseVisualStyleBackColor = true;
             CreateAccountBtn.Click += CreateAccountBtn_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(22, 132);
+            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(262, 45);
+            label3.TabIndex = 8;
+            label3.Text = "Interest Rate (%):";
+            // 
+            // InterestRateNum
+            // 
+            InterestRateNum.DecimalPlaces = 2;
+            InterestRateNum.Location = new Point(292, 127);
+            InterestRateNum.Name = "InterestRateNum";
+            InterestRateNum.Size = new Size(277, 50);
+            InterestRateNum.TabIndex = 9;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(18F, 45F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1208, 571);
+            Controls.Add(InterestRateNum);
+            Controls.Add(label3);
             Controls.Add(CreateAccountBtn);
             Controls.Add(WithdrawBtn);
             Controls.Add(DepositBtn);
@@ -137,6 +160,7 @@
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)AmountNum).EndInit();
             ((System.ComponentModel.ISupportInitialize)BankAccountGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)InterestRateNum).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,5 +175,7 @@
         private Button DepositBtn;
         private Button WithdrawBtn;
         private Button CreateAccountBtn;
+        private Label label3;
+        private NumericUpDown InterestRateNum;
     }
 }
