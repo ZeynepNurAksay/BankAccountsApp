@@ -48,7 +48,7 @@ namespace BankAccountsApp
             {
                 BankAccount account = GetSelectedAccount();
                 account.Balance += AmountNum.Value;
-                MessageBox.Show($"Your account has been successfully deposited with £{AmountNum.Value}");
+                MessageBox.Show($"Your account has been successfully deposited with £{AmountNum.Value}. Your current balance is {account.Balance}.");
             }
             else
             {
@@ -59,11 +59,26 @@ namespace BankAccountsApp
 
         private BankAccount GetSelectedAccount()
         {
-            if(BankAccountGrid.CurrentRow.DataBoundItem is BankAccount account)
+            if (BankAccountGrid.CurrentRow.DataBoundItem is BankAccount account)
             {
-                return account; 
+                return account;
             }
             return null;
+        }
+
+        private void WithdrawBtn_Click(object sender, EventArgs e)
+        {
+            BankAccount account = GetSelectedAccount();
+            if (AmountNum.Value > 0 && AmountNum.Value <= account.Balance)
+            {
+                account.Balance -= AmountNum.Value;
+                MessageBox.Show($"Your account has been successfully withdrawn with £{AmountNum.Value}. Your current balance is £{account.Balance}.");
+            }
+            else
+            {
+                MessageBox.Show($"Input invalid! Please enter an amount greater than £0, or less than your current balance £{account.Balance}.");
+            }
+            RefreshGrid();
         }
     }
 }
