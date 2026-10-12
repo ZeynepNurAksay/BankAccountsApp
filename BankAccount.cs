@@ -8,7 +8,7 @@ namespace BankAccountsApp
     {
         public string Owner { get; set; }
         public Guid AccountNumber { get; set; }
-        public decimal Balance { get; private set; }
+        public decimal Balance { get; protected set; }
 
         public BankAccount(string owner)
         {
@@ -17,7 +17,7 @@ namespace BankAccountsApp
             Balance = 0;
         }
 
-        public void Deposit(decimal amount)
+        public virtual void Deposit(decimal amount)
         {
 
             if (amount > 0)
